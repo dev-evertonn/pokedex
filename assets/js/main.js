@@ -1,18 +1,13 @@
-const offset = 0;
-const limit = 10;
-const url = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`;
-
 function convertPokemonToList(pokemon) {
     return `
-        <li class="pokemon">
-            <span class="number">#001</span>
+        <li class="pokemon" class="${pokemon.type}">
+            <span class="number">#0${pokemon.number}</span>
             <span class="name">${pokemon.name}</span>
             <div class="detail">
                 <ol class="types">
-                    <li>grass</li>
-                    <li>poison</li>
+                    ${pokemon.types.map((type) => `<li>${type}</li>`).join('')}
                 </ol>
-                <img src="https://www.pngarts.com/files/3/Bulbasaur-PNG-Free-Download.png" alt="${pokemon.name}">
+                <img src="${pokemon.img}" alt="${pokemon.name}">
             </div>
         </li>
     `
